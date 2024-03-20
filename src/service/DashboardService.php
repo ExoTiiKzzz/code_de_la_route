@@ -24,6 +24,10 @@ class DashboardService
         $trainingTypes = $this->em->getRepository(TrainingType::class)->findAll();
         $lastSession = $this->em->getRepository(Training::class)->findOneBy([], ['id' => 'DESC']);
 
+        if (count($trainingTypes) === 0) {
+            return [];
+        }
+
         foreach ($trainingTypes as $trainingType) {
             $trainings = $trainingType->getTrainings();
             $statistics['type'][$trainingType->getName()]['total'] = count($trainings);

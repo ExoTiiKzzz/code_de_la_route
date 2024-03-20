@@ -10,6 +10,11 @@
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
+            {% if statistics | length == 0 %}
+                <div class="alert alert-danger" role="alert">
+                    Aucune session n'a été trouvée.
+                </div>
+            {% else %}
 
             <!-- Main Content -->
             <div id="content">
@@ -140,6 +145,7 @@
 
             </div>
             <!-- End of Main Content -->
+            {% endif %}
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
@@ -172,6 +178,7 @@
 
     <!-- Page level custom scripts -->
     <script>
+        {% if statistics | length > 0 %}
 	    // Set new default font family and font color to mimic Bootstrap's default styling
 	    Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 	    Chart.defaults.global.defaultFontColor = '#858796';
@@ -268,5 +275,6 @@
 			    }
 		    }
 	    });
+        {% endif %}
     </script>
 {% endblock %}
