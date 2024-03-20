@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         gitCredentialId = 'test' //defined in credentials area
-        gitUrl = 'https://github.com/ExoTiiKzzz/code_de_la_route.git'
+        gitUrl = 'https://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@github.com/ExoTiiKzzz/code_de_la_route.git'
         deployBranch = 'main'
     }
 
