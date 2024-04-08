@@ -73,11 +73,9 @@ class TrainingType
 
     public function removeTraining(Training $training): self
     {
-        if ($this->trainings->removeElement($training)) {
+        if ($this->trainings->removeElement($training) && $training->getType() === $this) {
             // set the owning side to null (unless already changed)
-            if ($training->getType() === $this) {
-                $training->setType(null);
-            }
+            $training->setType(null);
         }
 
         return $this;

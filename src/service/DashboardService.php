@@ -44,7 +44,8 @@ class DashboardService
                 $std->date = $training->getCreatedAt()->format('Y-m-d H:i:s');
                 $statistics['trainings'][] = $std;
             }
-            $statistics['type'][$trainingType->getName()]['average'] = round($trainingTypeScoreTotal / count($trainings), 2);
+            $statistics['type'][$trainingType->getName()]['average'] =
+                round($trainingTypeScoreTotal / count($trainings), 2);
             $statistics['type'][$trainingType->getName()]['color'] = $trainingType->getColor();
         }
 
