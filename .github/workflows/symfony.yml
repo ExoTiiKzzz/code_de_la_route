@@ -47,11 +47,11 @@ jobs:
     - name: SonarQube Scan
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_URL: ${{ secrets.SONAR_URL }}
+        SONAR_URL: ${{ secrets.SONAR_HOST_URL }}
       run: vendor/bin/sonar-scanner \
         -Dsonar.projectKey=cdlr \
         -Dsonar.sources=. \
-        -Dsonar.host.url=$SONAR_URL \
+        -Dsonar.host.url=$SONAR_HOST_URL \
         -Dsonar.login=$SONAR_TOKEN
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
