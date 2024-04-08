@@ -47,4 +47,4 @@ jobs:
       with:
           args:
             -Dsonar.projectKey=projet2
-            -Dsonar.php.exclusions=src/Kernel.php,src/Tests/*,src/Tests/**,migrations/*,migrations/**
+            -Dsonar.exclusions=src/Kernel.php,public/js/lib/**,migrations/**
