@@ -47,5 +47,3 @@ jobs:
       with:
           args:
             -Dsonar.projectKey=projet2
-            -Dsonar.sources=/src
-            -Dsonar.language=php
