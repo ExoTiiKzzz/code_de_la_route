@@ -40,7 +40,11 @@ jobs:
         mkdir -p var
         touch var/data.sqlite
         php bin/console d:m:m
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
+    - uses: sonarsource/sonarqube-scan-action@master
       env:
-        DATABASE_URL: sqlite:///%kernel.project_dir%/var/data.sqlite
-      run: vendor/bin/phpunit
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      with:
+          args:
+            -Dsonar.projectKey=projet2
+            -Dsonar.exclusions=src/Kernel.php,public/js/lib/**,migrations/**
