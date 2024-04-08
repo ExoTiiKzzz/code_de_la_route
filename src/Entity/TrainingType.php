@@ -93,6 +93,7 @@ class TrainingType
 
     public function setColor(string $color): self
     {
+        $color = ltrim($color, '#');
         $this->color = $color;
 
         return $this;

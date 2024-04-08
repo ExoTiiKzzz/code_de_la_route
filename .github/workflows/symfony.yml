@@ -40,6 +40,8 @@ jobs:
         mkdir -p var
         touch var/data.sqlite
         php bin/console d:m:m
+    - name: Load Fixtures
+      run: php bin/console d:f:l --no-interaction
     - name: PHPUnit
       run: php bin/phpunit --coverage-clover=coverage.xml
     - uses: sonarsource/sonarqube-scan-action@master
