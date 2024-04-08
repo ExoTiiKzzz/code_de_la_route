@@ -47,6 +47,7 @@ jobs:
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       with:
           args:
+            ls -l .
             -Dsonar.projectKey=projet2
             -Dsonar.sources=./src
             -Dsonar.language=php
