@@ -36,11 +36,22 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
     - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      run: |
+        composer require sonarsource/sonar-scanner-php
+        composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Create Database
       run: |
         mkdir -p var
         touch var/data.sqlite
+    - name: SonarQube Scan
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_URL: ${{ secrets.SONAR_URL }}
+      run: vendor/bin/sonar-scanner \
+        -Dsonar.projectKey=cdlr \
+        -Dsonar.sources=. \
+        -Dsonar.host.url=$SONAR_URL \
+        -Dsonar.login=$SONAR_TOKEN
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DATABASE_URL: sqlite:///%kernel.project_dir%/var/data.sqlite
