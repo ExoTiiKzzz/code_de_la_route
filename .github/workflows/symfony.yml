@@ -48,3 +48,4 @@ jobs:
           args:
             -Dsonar.projectKey=projet2
             -Dsonar.exclusions=src/Kernel.php,public/js/lib/**,migrations/**,public/css/lib/**,config/**,tests/bootstrap.php,public/index.php
+            -Dsonar.tests=tests
